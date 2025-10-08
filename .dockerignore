@@ -1,0 +1,23 @@
+# Maven / Build
+target
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+release.properties
+
+# IDE
+.idea
+*.iml
+.project
+.classpath
+.settings/
+.vscode/
+
+# Git
+git
+.git
+.gitignore
+
+# OS / Misc
+.DS_Store
+Thumbs.db

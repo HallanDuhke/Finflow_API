@@ -1,0 +1,42 @@
+version: '3.9'
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: finflow_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: finflow_db
+      POSTGRES_USER: finflow
+      POSTGRES_PASSWORD: finflow_pwd
+      TZ: UTC
+    ports:
+      - "5432:5432"
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U finflow"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        SKIP_TESTS: "true"
+    image: finflow/api:latest
+    container_name: finflow_api
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/finflow_db
+      SPRING_DATASOURCE_USERNAME: finflow
+      SPRING_DATASOURCE_PASSWORD: finflow_pwd
+      JAVA_OPTS: -Xms256m -Xmx512m
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+volumes:
+  db_data:

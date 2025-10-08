@@ -1,0 +1,7 @@
+CREATE TABLE clients (
+    id SERIAL PRIMARY KEY,
+    full_name VARCHAR(200) NOT NULL,
+    email VARCHAR(150) UNIQUE NOT NULL,
+    cpf_cnpj VARCHAR(30) UNIQUE,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT now()
+);

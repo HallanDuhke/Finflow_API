@@ -1,0 +1,74 @@
+HELP.md
+
+# --- Build output ---
+target/
+!**/src/main/**/target/
+!**/src/test/**/target/
+
+# Maven wrapper JAR (can be re-downloaded)
+.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
+
+### IntelliJ IDEA ###
+.idea
+*.iws
+*.iml
+*.ipr
+
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+build/
+!**/src/main/**/build/
+!**/src/test/**/build/
+
+### VS Code ###
+.vscode/
+
+### Logs and temp ###
+*.log
+logs/
+*.tmp
+*.swp
+*.swo
+~*
+
+### OS / Misc ###
+.DS_Store
+Thumbs.db
+
+### Spring Boot ###
+*.pid
+
+### Generated sources ###
+generated-sources/
+generated-test-sources/
+
+### Coverage / Reports ###
+jacoco.exec
+site/
+
+### Environment / Secrets ###
+*.env
+.env.*
+application-*.properties.local
+application-*.yml
+application-*.yaml
+
+### Database files ###
+*.h2.db
+*.mv.db
+
+### Node (if added later) ###
+node_modules/
